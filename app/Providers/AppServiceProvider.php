@@ -18,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Site::observe(SiteObserver::class);
-
-        $table = config('admin.extensions.config.table', 'admin_config');
+	Schema::defaultStringLength(191); 
+ 	$table = config('admin.extensions.config.table', 'admin_config');
         if (Schema::hasTable($table)) {
             Config::load();
         }

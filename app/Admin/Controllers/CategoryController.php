@@ -78,6 +78,10 @@ class CategoryController extends Controller
         $form->icon('icon', '图标')
             ->default('fa-star-o')
             ->rules('required|max:20');
+        $form->text('sort', '排序')
+            ->default(Category::getRootOrder())
+            ->readOnly()
+            ->rules('required|int');
 
         $form->tools(function (Form\Tools $tools) {
             $tools->disableDelete();
